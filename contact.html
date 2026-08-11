@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Kaustubh Mude</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="logo">Kaustubh Mude<span></span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+  <section class="glow-card contact-box">
+    <div class="head"><h2>Get In <span>Touch</span></h2><p>Open to Data Science & Analytics opportunities</p></div>
+    <p class="contact-sub">Based in Nagpur, Maharashtra, India — feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:kaustubhmude@05gmail.com">&#9993; Email</a>
+      <a href="https://github.com/kaustubh770" target="_blank" rel="noopener">&#128187; GitHub</a>
+      <a href="https://www.linkedin.com/in/kaustubh-mude-918872317/" target="_blank" rel="noopener">&#128279; LinkedIn</a>
+    </div>
+  </section>
+</div>
+
+
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+</script>
+</body>
+</html>

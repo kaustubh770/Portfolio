@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Kaustubh Mude</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Skill icon cards — move this into style.css if you'd like it centralized */
+  .skills-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
+    gap:1.2rem;
+    margin-top:1rem;
+    max-width:820px;
+    width:100%;
+    justify-items:center;
+  }
+  .skill-card{
+    position:relative;
+    background:#0b1224;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:1.4rem 1rem;
+    width:100%;
+    max-width:150px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.8rem;
+    text-align:center;
+    cursor:pointer;
+    overflow:hidden;
+    isolation:isolate;
+    opacity:0;
+    transform:translateY(28px) scale(.94);
+    transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease), opacity .6s ease, translate .6s ease;
+  }
+  .skill-card.in-view{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .skill-card:hover{
+    transform:translateY(-4px) scale(1);
+    border-color:var(--blue);
+    box-shadow:0 12px 30px rgba(47,111,237,0.2);
+  }
+  /* Glow that follows the cursor across each skill card */
+  .skill-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    background:radial-gradient(160px circle at var(--mx,50%) var(--my,50%), rgba(34,211,238,0.28), transparent 65%);
+    opacity:0;
+    transition:opacity .3s ease;
+    pointer-events:none;
+    z-index:0;
+  }
+  .skill-card:hover::after{
+    opacity:1;
+  }
+  .skill-card img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+    pointer-events:none;
+    position:relative;
+    z-index:1;
+  }
+  .skill-card span{
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--text);
+    pointer-events:none;
+    position:relative;
+    z-index:1;
+  }
+
+  /* Click bounce */
+  .skill-card.bounce{
+    animation:skillBounce .5s var(--ease);
+  }
+  @keyframes skillBounce{
+    0%{ transform:scale(1); }
+    30%{ transform:scale(0.88); }
+    55%{ transform:scale(1.08); }
+    75%{ transform:scale(0.97); }
+    100%{ transform:scale(1); }
+  }
+
+  /* Blue ripple burst from cursor point */
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(34,211,238,0.85) 0%, rgba(47,111,237,0.55) 45%, transparent 72%);
+    transform:translate(-50%, -50%) scale(0);
+    pointer-events:none;
+    z-index:0;
+    animation:rippleBurst .6s ease-out forwards;
+  }
+  @keyframes rippleBurst{
+    0%{
+      width:0px; height:0px;
+      opacity:0.9;
+    }
+    60%{
+      opacity:0.55;
+    }
+    100%{
+      width:340px; height:340px;
+      opacity:0;
+    }
+  }
+
+  /* Flash glow around the whole card border on click */
+  .skill-card.flash{
+    box-shadow:0 0 0px rgba(34,211,238,0);
+    animation:cardFlash .6s ease-out;
+  }
+  @keyframes cardFlash{
+    0%{ box-shadow:0 0 0px rgba(34,211,238,0); border-color:var(--border); }
+    35%{ box-shadow:0 0 28px rgba(34,211,238,0.75); border-color:var(--cyan); }
+    100%{ box-shadow:0 0 0px rgba(34,211,238,0); border-color:var(--border); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+<div class="spotlight-cursor"></div>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="logo">Kaustubh Mude<span></span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html" class="active">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="head"><h2>My <span>Skills</span></h2><p>Tools and technologies I use to turn data into decisions</p></div>
+
+  <section class="glow-card">
+    <div class="skills-inner">
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/python/22d3ee" alt="Python" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🐍',style:'font-size:2rem'}))">
+          <span>Python</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/mysql/22d3ee" alt="SQL" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🗄️',style:'font-size:2rem'}))">
+          <span>SQL</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Machine Learning" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🤖',style:'font-size:2rem'}))">
+          <span>Machine Learning</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Classification" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🏷️',style:'font-size:2rem'}))">
+          <span>Classification</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Regression" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📈',style:'font-size:2rem'}))">
+          <span>Regression</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Clustering" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🎯',style:'font-size:2rem'}))">
+          <span>Clustering (K-Means)</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Supervised Learning" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🧑‍🏫',style:'font-size:2rem'}))">
+          <span>Supervised Learning</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Unsupervised Learning" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🧩',style:'font-size:2rem'}))">
+          <span>Unsupervised Learning</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Data Preprocessing" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🧹',style:'font-size:2rem'}))">
+          <span>Data Preprocessing</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/pandas/22d3ee" alt="Exploratory Data Analysis" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🔍',style:'font-size:2rem'}))">
+          <span>Exploratory Data Analysis</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Feature Engineering" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🛠️',style:'font-size:2rem'}))">
+          <span>Feature Engineering</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/pandas/22d3ee" alt="Data Wrangling" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🔄',style:'font-size:2rem'}))">
+          <span>Data Wrangling</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scipy/22d3ee" alt="Statistical Analysis" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📐',style:'font-size:2rem'}))">
+          <span>Statistical Analysis</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/plotly/22d3ee" alt="Data Visualization" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📉',style:'font-size:2rem'}))">
+          <span>Data Visualization</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/tensorflow/22d3ee" alt="Deep Learning" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🧠',style:'font-size:2rem'}))">
+          <span>Deep Learning</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/tensorflow/22d3ee" alt="CNN" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🕸️',style:'font-size:2rem'}))">
+          <span>CNN</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/tensorflow/22d3ee" alt="LSTM" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🔁',style:'font-size:2rem'}))">
+          <span>LSTM</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/tensorflow/22d3ee" alt="Neural Networks" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🧠',style:'font-size:2rem'}))">
+          <span>Neural Networks</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/tensorflow/22d3ee" alt="TensorFlow" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🧮',style:'font-size:2rem'}))">
+          <span>TensorFlow</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/keras/22d3ee" alt="Keras" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🔗',style:'font-size:2rem'}))">
+          <span>Keras</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/tensorflow/22d3ee" alt="ResNet" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🖼️',style:'font-size:2rem'}))">
+          <span>ResNet</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/numpy/22d3ee" alt="NumPy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🔢',style:'font-size:2rem'}))">
+          <span>NumPy</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/pandas/22d3ee" alt="Pandas" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🐼',style:'font-size:2rem'}))">
+          <span>Pandas</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/scikitlearn/22d3ee" alt="Scikit-Learn" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🔬',style:'font-size:2rem'}))">
+          <span>Scikit-Learn</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/plotly/22d3ee" alt="Plotly" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📊',style:'font-size:2rem'}))">
+          <span>Plotly</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/matplotlib/22d3ee" alt="Matplotlib" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📈',style:'font-size:2rem'}))">
+          <span>Matplotlib</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/seaborn/22d3ee" alt="Seaborn" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🌊',style:'font-size:2rem'}))">
+          <span>Seaborn</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/streamlit/22d3ee" alt="Streamlit" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📊',style:'font-size:2rem'}))">
+          <span>Streamlit</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/flask/22d3ee" alt="Flask" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🌶️',style:'font-size:2rem'}))">
+          <span>Flask</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/mysql/22d3ee" alt="MySQL" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🗄️',style:'font-size:2rem'}))">
+          <span>MySQL</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/github/22d3ee" alt="GitHub" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🐙',style:'font-size:2rem'}))">
+          <span>GitHub</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/jupyter/22d3ee" alt="Jupyter Notebook" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📓',style:'font-size:2rem'}))">
+          <span>Jupyter Notebook</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/visualstudio/22d3ee" alt="VS Code" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'💻',style:'font-size:2rem'}))">
+          <span>VS Code</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/powerbi/22d3ee" alt="Power BI" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📈',style:'font-size:2rem'}))">
+          <span>Power BI</span>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/microsoftexcel/22d3ee" alt="Excel" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📊',style:'font-size:2rem'}))">
+          <span>Microsoft Excel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+if (toggle && navLinks) {
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
+}
+
+  // Click bounce + blue ripple/glow burst from cursor position
+  const skillCards = document.querySelectorAll('.skill-card');
+
+  skillCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // ripple positioned exactly at click point
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      card.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+
+      // bounce + border flash
+      card.classList.remove('bounce', 'flash');
+      void card.offsetWidth; // restart animation
+      card.classList.add('bounce', 'flash');
+      card.addEventListener('animationend', function handler(ev) {
+        if (ev.animationName === 'skillBounce') {
+          card.classList.remove('bounce');
+        }
+        if (ev.animationName === 'cardFlash') {
+          card.classList.remove('flash');
+        }
+      });
+    });
+  });
+
+  // Progressive reveal: cards fade/slide in one-by-one as they enter view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting){
+        const card = entry.target;
+        const index = Array.from(skillCards).indexOf(card);
+        card.style.transitionDelay = (index * 70) + 'ms';
+        card.classList.add('in-view');
+        observer.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  skillCards.forEach(card => observer.observe(card));
+
+  // Cursor-follow glow on each card
+  skillCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+    });
+  });
+</script>
+
+<script src="common.js"></script>
+</body>
+</html>

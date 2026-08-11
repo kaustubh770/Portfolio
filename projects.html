@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Kaustubh Mude</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="topnav">
+        <div class="nav-inner">
+
+            <div class="logo">
+                Kaustubh Mude <span></span>
+            </div>
+
+            
+
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Projects -->
+    <div class="page">
+
+        <div class="head">
+            <h2>My <span>Projects</span></h2>
+            <p>A collection of my Data Science, Analytics & Machine Learning projects.</p>
+        </div>
+
+     
+        <section class="projects-grid">
+
+            <!-- Project 1 -->
+            <div class="card show" data-tags="python ml regression flask">
+
+                <div class="card-banner">🚗</div>
+
+                <div class="card-body">
+
+                    <div class="card-tag">
+                        ML · Flask Web App
+                    </div>
+
+                    <h3>Car Price Prediction</h3>
+
+                    <p>
+                        Built a machine learning regression model to estimate used car
+                        prices using Python and Scikit-learn. Applied data preprocessing
+                        including missing value handling, feature encoding, and scaling,
+                        then compared multiple models and improved accuracy with feature
+                        engineering and hyperparameter tuning. Integrated the model with
+                        Flask for real-time price prediction.
+                    </p>
+
+                    <div class="pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">Scikit-learn</span>
+                        <span class="pill">Pandas</span>
+                        <span class="pill">Flask</span>
+                        <span class="pill">Jupyter Notebook</span>
+                    </div>
+
+                    <div class="card-links">
+                        <a href="https://github.com/kaustubh770" target="_blank" rel="noopener" class="code-link">View Project</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card show" data-tags="python sql powerbi dashboard">
+
+                <div class="card-banner">🛒</div>
+
+                <div class="card-body">
+
+                    <div class="card-tag">
+                        Analytics · Power BI Dashboard
+                    </div>
+
+                    <h3>Customer Shopping Analysis</h3>
+
+                    <p>
+                        Analyzed 3,900+ customer transactions using Python, PostgreSQL,
+                        and Power BI. Performed data cleaning, feature engineering, and
+                        exploratory data analysis with Pandas, developed SQL queries to
+                        analyze customer behavior, revenue trends, and product performance,
+                        and built an interactive Power BI dashboard to visualize KPIs and
+                        generate data-driven recommendations for retention and growth.
+                    </p>
+
+                    <div class="pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">MySQL</span>
+                        <span class="pill">Power BI</span>
+                        <span class="pill">Jupyter Notebook</span>
+                    </div>
+
+                    <div class="card-links">
+                        <a href="https://github.com/kaustubh770" target="_blank" rel="noopener" class="code-link">View Project</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+
+    </footer>
+
+    <!-- Mobile Menu -->
+    <script>
+        const toggle = document.getElementById("navToggle");
+        const links = document.getElementById("navLinks");
+
+        toggle.addEventListener("click", () => {
+            links.classList.toggle("open");
+            toggle.classList.toggle("open");
+        });
+
+        // Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    const tags = card.dataset.tags || '';
+                    if (filter === 'all' || tags.includes(filter)) {
+                        card.classList.add('show');
+                    } else {
+                        card.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = pct + '%';
+        }
+        window.addEventListener('scroll', updateScrollProgress);
+        window.addEventListener('load', updateScrollProgress);
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        });
+    </script>
+
+</body>
+
+</html>

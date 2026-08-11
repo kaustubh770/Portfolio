@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Kaustubh Mude</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Center the photo card within its grid column */
+  .about-grid{
+    align-items:start;
+  }
+  .about-photo-col{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+  }
+  .flip-card{
+    perspective:1200px;
+  }
+  .flip-inner{
+    will-change:transform;
+  }
+  /* Glow that follows the cursor over the photo card */
+  .flip-card{
+    position:relative;
+  }
+  .flip-card::before{
+    content:'';
+    position:absolute;
+    inset:-2px;
+    border-radius:22px;
+    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(34,211,238,0.35), transparent 60%);
+    opacity:0;
+    transition:opacity .3s ease;
+    pointer-events:none;
+    z-index:2;
+  }
+  .flip-card:hover::before{
+    opacity:1;
+  }
+</style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+<div class="spotlight-cursor" id="spotlightCursor"></div>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="logo">Kaustubh Mude<span></span></div>
+  
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="head"><h2>About <span>Me</span></h2><p>Who I am and where I've studied</p></div>
+
+  <section class="glow-card about-grid">
+    <div class="about-photo-col">
+      <div class="flip-card" id="flipCard">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="profile.jpeg" alt="Kaustubh Mude">
+          </div>
+          <div class="flip-back">
+            <h4>Quick facts</h4>
+            <p>📍 Based in Nagpur, Maharashtra</p>
+            <p>🎓 B.Tech IT, Kavikulguru Institute of Technology and Science</p>
+            <p>💻 Loves building end-to-end ML pipelines</p>
+            <p>📊 Passionate about Data Science & Analytics</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <p>Hi, I'm Kaustubh Mude, a B.Tech Information Technology graduate with a strong interest in Data Science and Analytics. I enjoy working with data to uncover meaningful insights and build intelligent, data-driven solutions for real-world problems.</p>
+      <p>I am skilled in Python, SQL, Power BI, and Excel, with hands-on experience in data preprocessing, exploratory data analysis, feature engineering, and machine learning. During my internship at Hisan Lab Pvt. Ltd., I gained practical exposure to data cleaning, interactive dashboard development, and transforming raw data into actionable reports that support decision-making.</p>
+      <p>I have completed academic and internship projects in data analysis and machine learning, including regression modeling and customer analytics. I am passionate about continuous learning and am seeking an entry-level Data Science & Analytics role where I can apply my analytical skills to drive data-driven business solutions.</p>
+
+      <div class="about-section-gap">
+        <div class="timeline" id="timeline">
+          <div class="timeline-fill" id="timelineFill"></div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-year">2022 – 2026</div>
+            <div class="timeline-title">B.Tech Information Technology</div>
+            <div class="timeline-sub">Kavikulguru Institute of Technology and Science, Ramtek (CGPA: 6.5)</div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-year">Feb 2026 – July 2026</div>
+            <div class="timeline-title">Data Science Intern</div>
+            <div class="timeline-sub">Hisan Lab Pvt. Ltd.</div>
+          </div>
+        </div>
+
+        <a href="Kaustubh_Mude_Resume.pdf" class="btn btn-primary btn-pulse" target="_blank" rel="noopener" style="margin-top:2rem; display:inline-flex;">
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
+
+  // Timeline scroll animation
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const timelineFill = document.getElementById('timelineFill');
+
+  function updateTimeline() {
+    let lastVisibleIndex = -1;
+
+    timelineItems.forEach((item, i) => {
+      const rect = item.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        item.classList.add('in-view');
+        lastVisibleIndex = i;
+      }
+    });
+
+    if (lastVisibleIndex >= 0 && timelineItems.length > 0) {
+      const lastItem = timelineItems[lastVisibleIndex];
+      const timelineRect = document.getElementById('timeline').getBoundingClientRect();
+      const itemRect = lastItem.getBoundingClientRect();
+      const fillHeight = (itemRect.top + itemRect.height / 2) - timelineRect.top;
+      timelineFill.style.height = Math.max(0, fillHeight) + 'px';
+    }
+  }
+
+  window.addEventListener('scroll', updateTimeline);
+  window.addEventListener('load', updateTimeline);
+  window.addEventListener('resize', updateTimeline);
+
+  // Scroll progress bar
+  const scrollProgress = document.getElementById('scrollProgress');
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateScrollProgress);
+  window.addEventListener('load', updateScrollProgress);
+
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('show', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+  });
+
+  // Cursor spotlight glow
+  const spotlight = document.getElementById('spotlightCursor');
+  document.addEventListener('mousemove', (e) => {
+    spotlight.style.setProperty('--x', e.clientX + 'px');
+    spotlight.style.setProperty('--y', e.clientY + 'px');
+  });
+
+  // 3D tilt + glow-follow on the photo flip card
+  const flipCard = document.getElementById('flipCard');
+  flipCard.addEventListener('mousemove', (e) => {
+    const rect = flipCard.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // glow position
+    flipCard.style.setProperty('--mx', x + 'px');
+    flipCard.style.setProperty('--my', y + 'px');
+
+    // subtle 3D tilt
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateY = ((x - centerX) / centerX) * 8;
+    const rotateX = -((y - centerY) / centerY) * 8;
+    flipCard.style.setProperty('--tiltX', rotateX + 'deg');
+    flipCard.style.setProperty('--tiltY', rotateY + 'deg');
+    flipCard.querySelector('.flip-inner').style.transform =
+      flipCard.matches(':hover') && !flipCard.classList.contains('flipped')
+        ? `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+        : '';
+  });
+  flipCard.addEventListener('mouseleave', () => {
+    flipCard.querySelector('.flip-inner').style.transform = '';
+  });
+</script>
+
+<script src="common.js"></script>
+</body>
+
+</html>
