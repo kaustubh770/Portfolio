@@ -121,6 +121,17 @@ html.lenis.lenis-stopped{
 .nav-links a.active{ color:var(--cyan); }
 .nav-links a.active::after{ width:100%; }
 
+.nav-highlight{
+  background:var(--grad); color:#fff !important; padding:.35rem .85rem; border-radius:8px;
+  font-size:.85rem !important; letter-spacing:.02em;
+  transition:box-shadow .25s var(--ease), transform .25s var(--ease) !important;
+}
+.nav-highlight::after{ display:none !important; }
+.nav-highlight:hover{
+  box-shadow:0 0 18px rgba(47,111,237,0.55); transform:translateY(-2px);
+  color:#fff !important;
+}
+
 /* Animated hamburger -> X */
 .nav-toggle{
   display:none; flex-direction:column; justify-content:center; gap:5px;
