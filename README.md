@@ -30,9 +30,9 @@ This portfolio showcases my technical skills, projects, internship experience, a
 
 ## 📫 Contact
 
-* 📧 kaustubhmude@05gmail.com
+* 📧 kaustubhmude05@gmail.com
 * 💻 [GitHub](https://github.com/kaustubh770)
 * 🔗 [LinkedIn](https://www.linkedin.com/in/kaustubh-mude-918872317/)
-* 📍 Nagpur, Maharashtra, India
+* 📍 Pune, Maharashtra, India
 
 Thank you for visiting my portfolio. I'm continuously learning and expanding my expertise in Data Science and Analytics. Feel free to explore my work and connect with me for collaboration or professional opportunities.
