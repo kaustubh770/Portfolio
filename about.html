@@ -39,6 +39,38 @@
   .flip-card:hover::before{
     opacity:1;
   }
+
+  /* Certifications */
+  .certs{ margin-top:2.2rem; }
+  .certs-title{
+    font-size:.78rem;
+    color:var(--cyan);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-weight:var(--fw-bold);
+    margin-bottom:.9rem;
+  }
+  .cert-row{ display:flex; flex-wrap:wrap; gap:.8rem; }
+  .cert-card{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+    background:#0b1224;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:.85rem 1.1rem;
+    flex:1 1 230px;
+    min-width:0;
+    transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .cert-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--blue);
+    box-shadow:0 10px 26px rgba(47,111,237,0.18);
+  }
+  .cert-badge{ font-size:1.45rem; line-height:1; flex:none; }
+  .cert-name{ font-size:.92rem; font-weight:var(--fw-semibold); line-height:1.35; }
+  .cert-issuer{ font-size:.78rem; color:var(--muted); margin-top:.15rem; }
 </style>
 </head>
 <body>
@@ -104,6 +136,26 @@
             <div class="timeline-year">Feb 2026 – July 2026</div>
             <div class="timeline-title">Data Science Intern</div>
             <div class="timeline-sub">Hisan Lab Pvt. Ltd.</div>
+          </div>
+        </div>
+
+        <div class="certs">
+          <div class="certs-title">Certifications</div>
+          <div class="cert-row">
+            <div class="cert-card">
+              <span class="cert-badge">📊</span>
+              <div>
+                <div class="cert-name">Data Analytics</div>
+                <div class="cert-issuer">Deloitte</div>
+              </div>
+            </div>
+            <div class="cert-card">
+              <span class="cert-badge">🤖</span>
+              <div>
+                <div class="cert-name">GenAI Powered Data Analytics</div>
+                <div class="cert-issuer">TATA</div>
+              </div>
+            </div>
           </div>
         </div>
 

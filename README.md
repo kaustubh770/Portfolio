@@ -17,7 +17,7 @@ This portfolio showcases my technical skills, projects, internship experience, a
 
 * Python
 * SQL (MySQL, PostgreSQL)
-* Power BI
+* Power BI (with DAX, Power Query & data modeling)
 * Microsoft Excel
 * Machine Learning (Scikit-learn, TensorFlow, Keras)
 * HTML5
@@ -27,6 +27,11 @@ This portfolio showcases my technical skills, projects, internship experience, a
 ## 🎓 Experience
 
 * **Data Science Intern** at Hisan Lab Pvt. Ltd. (Feb 2026 – July 2026)
+
+## 🏅 Certifications
+
+* **Data Analytics** — Deloitte
+* **GenAI Powered Data Analytics** — TATA
 
 ## 📫 Contact
 
